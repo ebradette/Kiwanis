@@ -75,7 +75,7 @@ async function charger() {
         // Aucune coupure, aucune ligne supplémentaire
         document.getElementById("ligne").innerHTML = `
             <div class="left">Gros lot : ${total}</div>
-            <div class="right">Le gagnant remporte ${winner}</div>
+            <div class="right">Le gagnant remporte : ${winner}</div>
         `;
     }
     catch (e) {
@@ -90,3 +90,4 @@ setInterval(charger, 30000);
 
 </body>
 </html>
+
