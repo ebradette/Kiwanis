@@ -6,41 +6,39 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    background: #ffffff; /* Fond blanc */
-    color: #0d1b2a;      /* Texte bleu foncé */
+    background: #ffffff;
+    color: #0d1b2a;
     margin: 0;
     padding: 0;
+    height: 135px; /* Contrainte de hauteur */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
   }
 
   .top-bar {
-    width: 100%;
-    text-align: left;
-    padding: 30px 40px;
-    background: #ffffff;
     display: flex;
-    gap: 30px;
-    align-items: baseline;
+    align-items: center;
+    gap: 20px;
+    padding-left: 25px;
+    width: 100%;
   }
 
   .gros-lot {
-    font-size: 55px; /* PLUS GROS */
+    font-size: 38px;   /* dimension adaptée */
     font-weight: bold;
-    color: #0d1b2a;
   }
 
   .montant-gagnant {
-    font-size: 38px; /* PLUS PETIT */
+    font-size: 28px;   /* plus petit, mais lisible */
     font-weight: normal;
-    color: #0d1b2a;
     opacity: 0.85;
   }
 </style>
 </head>
 <body>
 
-<div id="ligne" class="top-bar">
-    Chargement…
-</div>
+<div id="ligne" class="top-bar">Chargement…</div>
 
 <script>
 async function charger() {
@@ -60,8 +58,12 @@ async function charger() {
         const totalCents = json.props.pageProps.data.total_amount;
         const winnerCents = json.props.pageProps.data.amount_winner;
 
-        const total = (totalCents / 100).toLocaleString("fr-CA", { style: "currency", currency: "CAD" });
-        const winner = (winnerCents / 100).toLocaleString("fr-CA", { style: "currency", currency: "CAD" });
+        const total = (totalCents / 100).toLocaleString("fr-CA", {
+            style: "currency", currency: "CAD"
+        });
+        const winner = (winnerCents / 100).toLocaleString("fr-CA", {
+            style: "currency", currency: "CAD"
+        });
 
         document.getElementById("ligne").innerHTML = `
             <span class="gros-lot">Gros lot : ${total}</span>
