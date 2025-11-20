@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Tirage Moitié-Moitié</title>
+<title>Moitié-Moitié</title>
 
 <style>
   body {
@@ -20,20 +20,21 @@
   .container {
     display: flex;
     width: 100%;
-    padding: 0 20px;
     justify-content: space-between;
+    padding: 0 20px;
     align-items: center;
   }
 
-  .gros-lot {
-    font-size: 42px;
+  .left {
+    font-size: 32px;
     font-weight: bold;
     white-space: nowrap;
   }
 
-  .gagnant {
-    font-size: 30px;
+  .right {
+    font-size: 26px;
     opacity: 0.85;
+    line-height: 1.1;
     white-space: nowrap;
     text-align: right;
   }
@@ -68,8 +69,8 @@ async function charger() {
         const winner = (winnerCents / 100).toLocaleString("fr-CA", { style:"currency", currency:"CAD" });
 
         document.getElementById("ligne").innerHTML = `
-          <div class="gros-lot">Gros lot : ${total}</div>
-          <div class="gagnant">Le gagnant remporte<br>${winner}</div>
+            <div class="left">Gros lot : ${total}</div>
+            <div class="right">Le gagnant remporte<br>${winner}</div>
         `;
     }
     catch (e) {
