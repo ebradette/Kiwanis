@@ -11,7 +11,7 @@
     background: #ffffff;
     color: #0d1b2a;
     font-family: Arial, sans-serif;
-    height: 135px;
+    height: 135px;      /* Hauteur du widget */
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@
   .container {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-between; /* Gros lot à gauche, gagnant à droite */
     padding: 0 20px;
     align-items: center;
   }
@@ -34,7 +34,6 @@
   .right {
     font-size: 26px;
     opacity: 0.85;
-    line-height: 1.1;
     white-space: nowrap;
     text-align: right;
   }
@@ -65,12 +64,18 @@ async function charger() {
         const totalCents = json.props.pageProps.data.total_amount;
         const winnerCents = json.props.pageProps.data.amount_winner;
 
-        const total = (totalCents / 100).toLocaleString("fr-CA", { style:"currency", currency:"CAD" });
-        const winner = (winnerCents / 100).toLocaleString("fr-CA", { style:"currency", currency:"CAD" });
+        const total = (totalCents / 100).toLocaleString("fr-CA", {
+            style:"currency", currency:"CAD"
+        });
 
+        const winner = (winnerCents / 100).toLocaleString("fr-CA", {
+            style:"currency", currency:"CAD"
+        });
+
+        // Aucune coupure, aucune ligne supplémentaire
         document.getElementById("ligne").innerHTML = `
             <div class="left">Gros lot : ${total}</div>
-            <div class="right">Le gagnant remporte<br>${winner}</div>
+            <div class="right">Le gagnant remporte ${winner}</div>
         `;
     }
     catch (e) {
