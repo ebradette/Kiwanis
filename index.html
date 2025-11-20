@@ -78,7 +78,7 @@ async function charger() {
 
         document.getElementById("ligne").innerHTML =
           '<div class="left">Gros lot : <span class="amount">' + total + '</span></div>' +
-          '<div class="right">Le gagnant remporte ' + winner + '</div>';
+          '<div class="right">Le gagnant remporte : ' + winner + '</div>';
 
     } catch (e) {
         console.error(e);
@@ -92,4 +92,5 @@ setInterval(charger, 30000);
 
 </body>
 </html>
+
 
