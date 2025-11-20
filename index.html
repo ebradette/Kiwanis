@@ -14,18 +14,33 @@
 
   .top-bar {
     width: 100%;
-    text-align: left;    /* ALIGNE À GAUCHE */
-    padding: 30px 40px;  /* Marge à gauche pour respirer */
-    font-size: 45px;
+    text-align: left;
+    padding: 30px 40px;
+    background: #ffffff;
+    display: flex;
+    gap: 30px;
+    align-items: baseline;
+  }
+
+  .gros-lot {
+    font-size: 55px; /* PLUS GROS */
     font-weight: bold;
     color: #0d1b2a;
-    background: #ffffff;
+  }
+
+  .montant-gagnant {
+    font-size: 38px; /* PLUS PETIT */
+    font-weight: normal;
+    color: #0d1b2a;
+    opacity: 0.85;
   }
 </style>
 </head>
 <body>
 
-<div id="ligne" class="top-bar">Chargement…</div>
+<div id="ligne" class="top-bar">
+    Chargement…
+</div>
 
 <script>
 async function charger() {
@@ -46,10 +61,12 @@ async function charger() {
         const winnerCents = json.props.pageProps.data.amount_winner;
 
         const total = (totalCents / 100).toLocaleString("fr-CA", { style: "currency", currency: "CAD" });
-        const winner = (winnerCents / 100).toLocaleString("fr-CA", { style: "currency", "currency": "CAD" });
+        const winner = (winnerCents / 100).toLocaleString("fr-CA", { style: "currency", currency: "CAD" });
 
-        document.getElementById("ligne").innerHTML =
-            `Cagnotte : ${total} &nbsp;&nbsp; | &nbsp;&nbsp; Gagnant : ${winner}`;
+        document.getElementById("ligne").innerHTML = `
+            <span class="gros-lot">Gros lot : ${total}</span>
+            <span class="montant-gagnant">| Le gagnant remporte ${winner}</span>
+        `;
 
     } catch (e) {
         console.error(e);
