@@ -14,9 +14,9 @@
 
   .top-bar {
     width: 100%;
-    text-align: center;
-    padding: 30px 0;
-    font-size: 45px;     /* Taille demandée */
+    text-align: left;    /* ALIGNE À GAUCHE */
+    padding: 30px 40px;  /* Marge à gauche pour respirer */
+    font-size: 45px;
     font-weight: bold;
     color: #0d1b2a;
     background: #ffffff;
@@ -46,7 +46,7 @@ async function charger() {
         const winnerCents = json.props.pageProps.data.amount_winner;
 
         const total = (totalCents / 100).toLocaleString("fr-CA", { style: "currency", currency: "CAD" });
-        const winner = (winnerCents / 100).toLocaleString("fr-CA", { style: "currency", currency: "CAD" });
+        const winner = (winnerCents / 100).toLocaleString("fr-CA", { style: "currency", "currency": "CAD" });
 
         document.getElementById("ligne").innerHTML =
             `Cagnotte : ${total} &nbsp;&nbsp; | &nbsp;&nbsp; Gagnant : ${winner}`;
