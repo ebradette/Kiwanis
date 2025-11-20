@@ -8,26 +8,24 @@
     font-family: Arial, sans-serif;
     background: #0d1b2a;
     color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 0;
   }
-  .ligne {
+
+  /* Conteneur en haut */
+  .top-bar {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
     font-size: 70px;
     font-weight: bold;
-  }
-  .label {
-    opacity: 0.8;
-    font-weight: normal;
+    background: #0d1b2a;
   }
 </style>
 </head>
 <body>
 
-<div id="ligne" class="ligne">Chargement…</div>
+<div id="ligne" class="top-bar">Chargement…</div>
 
 <script>
 async function charger() {
@@ -50,7 +48,7 @@ async function charger() {
         const total = (totalCents / 100).toLocaleString("fr-CA", { style: "currency", currency: "CAD" });
         const winner = (winnerCents / 100).toLocaleString("fr-CA", { style: "currency", currency: "CAD" });
 
-        // Ligne unique :
+        // Ligne en haut
         document.getElementById("ligne").innerHTML =
             `Cagnotte : ${total} &nbsp;&nbsp; | &nbsp;&nbsp; Gagnant : ${winner}`;
 
@@ -60,7 +58,7 @@ async function charger() {
     }
 }
 
-// Rafraîchir toutes les 30 secondes
+// Rafraîchir aux 30 secondes
 charger();
 setInterval(charger, 30000);
 </script>
